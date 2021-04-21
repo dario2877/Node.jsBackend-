@@ -9,14 +9,14 @@ const signin = require("./controllers/signin");
 const profile = require("./controllers/profile");
 const image = require("./controllers/image");
 
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0; 
+
 const db = knex({
   client: "pg",
   connection: {
-    host: "postgresql-concave-39451", //localhost
-    user: "postgres", //add your user name for the database here
-    password: "1234", //add your correct password in here
-    database: "bface", //add your database name you created here
-  },
+    host: process.env.DATABASE_URL, //localhost
+    ssl: true,
+  }
 });
 
 
